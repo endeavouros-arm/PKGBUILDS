@@ -1,0 +1,22 @@
+# Maintainer: EndeavourOS <info@endeavouros.com>
+pkgname=eos-lightdm-gtk-theme
+pkgver=2.0
+pkgrel=4
+pkgdesc='EndeavourOS theme for lightdm-gtk-greeter'
+arch=('any')
+url='https://www.endeavouros.com'
+license=('GPL3')
+depends=('lightdm' 'lightdm-gtk-greeter')
+optdepends=('eos-qogir-icons' 'arc-gtk-theme-eos')
+source=('lightdm-gtk-greeter.conf' '10-eos-gtk.conf' 'eos-lightdm-gtk-theme.install')
+install=$pkgname.install
+md5sums=('SKIP' 'SKIP' 'SKIP')
+sha512sums=('SKIP' 'SKIP' 'SKIP')
+
+package() {
+  cd "$srcdir/"
+  mkdir -p "${pkgdir}/etc/lightdm/"
+  cp lightdm-gtk-greeter.conf "${pkgdir}/etc/lightdm/"
+  mkdir -p "${pkgdir}/etc/lightdm/lightdm.conf.d"
+  cp 10-eos-gtk.conf  "${pkgdir}/etc/lightdm/lightdm.conf.d"
+}
