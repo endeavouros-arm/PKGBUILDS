@@ -1,4 +1,5 @@
-# Maintainer: EndeavourOS <info@endeavouros.com>
+# Maintainer: Sravan Pannala <57152030+sravanpannala@users.noreply.github.com>
+# Contributer: EndeavourOS <info@endeavouros.com>
 pkgname=eos-lightdm-gtk-theme
 pkgver=2.0
 pkgrel=4

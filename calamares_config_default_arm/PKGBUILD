@@ -1,4 +1,5 @@
-# Maintainer: EndeavourOS <info@endeavouros.com>
+# Maintainer: Sravan Pannala <57152030+sravanpannala@users.noreply.github.com>
+# Contributer: EndeavourOS <info@endeavouros.com>
 
 pkgname=calamares_config_default_arm
 pkgver=22.04.1.4

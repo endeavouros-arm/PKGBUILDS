@@ -1,10 +1,12 @@
 # Original Maintainer: Portergos Linux <portergoslinux@gmail.com>
-# Maintainer : EndeavourOS <info@endeavouros.com>
+# Maintainer: Sravan Pannala <57152030+sravanpannala@users.noreply.github.com>
+# Contributer: EndeavourOS <info@endeavouros.com>
+
 # Calamares installer configured for EndeavourOS
 #
 # Configurations are in extra packages:
-# calamares_config_default - default settings
-# calamares_config_ce - Community Edition settings
+# calamares_config_default_arm - default settings
+# calamares_config_ce_arm - Community Edition settings
 
 pkgname=calamares_current_arm
 _eos_changes=EndeavourOS-calamares
