@@ -1,7 +1,7 @@
 # Maintainer: Sravan Pannala <57152030+sravanpannala@users.noreply.github.com>
 # Contributer: EndeavourOS <info@endeavouros.com>
 pkgname=eos-lightdm-gtk-theme
-pkgver=2.0
+pkgver=2.1
 pkgrel=4
 pkgdesc='EndeavourOS theme for lightdm-gtk-greeter'
 arch=('any')
@@ -17,7 +17,8 @@ sha512sums=('SKIP' 'SKIP' 'SKIP')
 package() {
   cd "$srcdir/"
   mkdir -p "${pkgdir}/etc/lightdm/"
-  cp lightdm-gtk-greeter.conf "${pkgdir}/etc/lightdm/"
+  mkdir -p "${pkgdir}/etc/lightdm/lightdm-gtk-greeter.conf.d/"
+  cp lightdm-gtk-greeter.conf "${pkgdir}/etc/lightdm/lightdm-gtk-greeter.conf.d/"
   mkdir -p "${pkgdir}/etc/lightdm/lightdm.conf.d"
   cp 10-eos-gtk.conf  "${pkgdir}/etc/lightdm/lightdm.conf.d"
 }
