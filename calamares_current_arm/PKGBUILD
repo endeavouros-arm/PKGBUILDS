@@ -11,36 +11,36 @@
 pkgname=calamares_current_arm
 _eos_changes=EndeavourOS-calamares
 _reponame=calamares
-_calamares_ver=3.2.54
-pkgver=22.04.1.4
-pkgrel=1
+_calamares_ver=3.2.58.1
+pkgver=22.04.2.10
+pkgrel=4
 pkgdesc="Calamares installer for EndeavourOS ARM"
 arch=('any')
 url="https://github.com/endeavouros-team"
 license=('GPL3')
-optdepends=('mkinitcpio-openswap' 'calamares_config_default' 'calamares_config_ce' 'ckbcomp')
-makedepends=('git' 'cmake'  'extra-cmake-modules' 'kpmcore' 'boost' 'python-jsonschema' 'python-pyaml' 'python-unidecode')
-conflicts=('calamares_offline' 'calamares_netinstall_test' 'calamares_netinstall' 'calamares_current' 'calamares_test')
+optdepends=('calamares_config_default' 'calamares_config_ce')
+makedepends=('git' 'cmake' 'extra-cmake-modules' 'kpmcore' 'boost' 'python-jsonschema' 'python-pyaml' 'python-unidecode')
+conflicts=('calamares-git')
 depends=( 'qt5-svg' 'qt5-webengine' 'yaml-cpp' 'networkmanager' 'upower' 'kcoreaddons' 'kconfig' 'ki18n' 'kservice' \
 'kwidgetsaddons' 'kpmcore' 'squashfs-tools' 'rsync' 'cryptsetup' 'qt5-xmlpatterns' 'doxygen' 'dmidecode' \
-'gptfdisk' 'kparts' 'polkit-qt5' 'python' 'qt5ct' 'solid' 'qt5-tools' 'boost-libs')
-provides=("${pkgname}")
+'gptfdisk' 'kparts' 'polkit-qt5' 'python' 'solid' 'qt5-tools' 'boost-libs' 'libpwquality' 'ckbcomp' 'mkinitcpio-openswap')
+provides=("calamares")
 options=(!strip !emptydirs)
 source=(
   "https://github.com/endeavouros-team/$_eos_changes/archive/refs/tags/${pkgver}.tar.gz"
   "https://github.com/calamares/calamares/releases/download/v$_calamares_ver/$_reponame-$_calamares_ver.tar.gz"
 )
 
-sha256sums=('e0aa5cf1f707fb4051673e8922807ebce5c378fbcf4975267171095c09ad4acb'
-            '4df74b6c3b238cf0bff01a04566e265de3f143c297fbd8e0c0aa9447595cc8e9')
+sha256sums=('848432d4cd89711202856775ef5ff31f031f88adbd74b37dc7d2388261790d29'
+            '6cabd62b1899456dba87dee8ead7700f743ae3c7374240837b77305856b4798a')
 
 prepare() {
     mv "$_reponame-$_calamares_ver"            "$_reponame"
     # remove upstream modules packagechooser and netinstall for replacing with testing ones
     rm -r "$_reponame/src/modules/"{fstab,mount,packages}
-    
+
     mv "${_eos_changes}-${pkgver}" "${_eos_changes}"
-    
+
     # move extra modules from external repo inside calamares sources
     rsync -va "$_eos_changes/calamares-extra-modules/"*       "$_reponame/"
     rm -rf "$_eos_changes"
@@ -82,7 +82,7 @@ build() {
     plymouthcfg plasmalnf services-openrc \
     summaryq tracking usersq webview welcomeq"
     export DESTDIR="$srcdir/$_reponame/build/$pkgname"
-    make -j4 install
+    make install
 }
 
 package() {
@@ -90,5 +90,5 @@ package() {
 
     # Commom install -D doesn't work
     cp -r "${srcdir}/${_reponame}/build/$pkgname/"* "${pkgdir}${destdir}"
-    
+
 }
