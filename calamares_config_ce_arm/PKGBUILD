@@ -1,7 +1,7 @@
 # Maintainer: Sravan Pannala <57152030+sravanpannala@users.noreply.github.com>
 # Contributer: EndeavourOS <info@endeavouros.com>
 
-pkgname=calamares_config_ce
+pkgname=calamares_config_ce_arm
 pkgver=22.04.2.10
 pkgrel=1
 _repo_name=EndeavourOS-calamares
