@@ -1,4 +1,4 @@
-pkgbase = linux-odroid-517
+pkgbase = linux-odroid
 	pkgver = 5.17.4
 	pkgrel = 1
 	url = https://github.com/tobetter/linux/tree/odroid-5.17.y
@@ -27,9 +27,9 @@ pkgbase = linux-odroid-517
 	md5sums = 3dc88030a8f2f5a5f97266d99b149f77
 	md5sums = a4f45dd491148536f89046344a62eeff
 
-pkgname = linux-odroid-517
+pkgname = linux-odroid
 	pkgdesc = The Linux Kernel and modules - Tobetter Odroid Branch
-	install = linux-odroid-517.install
+	install = linux-odroid.install
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
@@ -41,7 +41,7 @@ pkgname = linux-odroid-517
 	replaces = linux-armv8
 	backup = etc/mkinitcpio.d/linux-odroid-517.preset
 
-pkgname = linux-odroid-517-headers
+pkgname = linux-odroid-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - Tobetter Odroid Branch
 	provides = linux-headers=5.17.4
 	conflicts = linux-headers
