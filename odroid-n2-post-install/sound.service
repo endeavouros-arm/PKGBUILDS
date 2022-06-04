@@ -1,0 +1,10 @@
+[Unit]
+Description=Odroid N2 - Audio Script
+
+[Service]
+Type=simple
+ExecStart=sh /usr/bin/g12_sound.sh
+
+[Install]
+Alias=sound.service
+WantedBy=default.target

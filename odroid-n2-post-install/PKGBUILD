@@ -1,0 +1,24 @@
+# Maintainer : Dan Johansen <strit@manjaro.org>
+
+pkgname=odroid-n2-post-install
+pkgver=0.1
+pkgrel=1
+pkgdesc="Manjaro ARM's Odroid N2 post install script"
+arch=('any')
+url="https://www.manjaro.org"
+license=('GPL')
+depends=()
+conflicts=()
+source=('G12B-ODROID-N2.conf' 'g12_sound.sh' 'sound.service')
+install=$pkgname.install
+sha512sums=('d0e21be741b402a83c891629783d3cef06b0baf86cfca592173c2f17c6325b502d2522cc2e2532b8e29d5653812e5dda49b164acd7244e8fbe244736401eca19'
+            '02be618374c9931d63a80c7c0b8f55305f05bf019d05d0de16c18b48897419bc7085a896401749ef49b611c468a930526ef52549bd51504f7eddca22411a8298'
+            '86135daaa24166fe7f5ef797ce4e4a793e553b40716bca7898a42d6ceda106f093c37681d77cc8ba3b2a5338e58357ee79b31182361cd0e6ff10ee3bf90cf6d3')
+
+package() {
+    #modifies some files to match the on2.
+    echo "Modifying on2 specific files..."
+    install -Dm644 "${srcdir}/G12B-ODROID-N2.conf" -t "${pkgdir}/usr/share/alsa/cards/"
+    install -Dm755 "${srcdir}/g12_sound.sh" -t "${pkgdir}/usr/bin/"
+    install -Dm644 "${srcdir}/sound.service" -t "${pkgdir}/usr/lib/systemd/system/"
+}

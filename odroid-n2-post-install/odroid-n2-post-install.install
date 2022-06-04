@@ -1,0 +1,7 @@
+post_install() {
+	# Edit mkinitcpio.conf
+		echo "Editing mkinitcpio.conf..."
+		sed -i s/"MODULES=()"/"MODULES=(meson_drm meson_dw_hdmi display_connector)"/g /etc/mkinitcpio.conf
+	# Enable services
+		systemctl enable sound.service
+}
