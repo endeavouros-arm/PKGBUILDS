@@ -1,11 +1,12 @@
-# Maintainer : Dan Johansen <strit@manjaro.org>
+# Maintainer : Sravan Pannala <sra.djoker@gmail.com>
+# Contributor : Dan Johansen <strit@manjaro.org>
 
 pkgname=odroid-n2-post-install
 pkgver=0.1
-pkgrel=1
-pkgdesc="Manjaro ARM's Odroid N2 post install script"
+pkgrel=2
+pkgdesc="Odroid N2 post install script"
 arch=('any')
-url="https://www.manjaro.org"
+url="https://arm.endeavouros.com"
 license=('GPL')
 depends=()
 conflicts=()

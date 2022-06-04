@@ -4,13 +4,13 @@
 pkgbase=linux-odroid
 pkgname=('linux-odroid'
          'linux-odroid-headers')
-_commit=a4a3b755d6825af3be1a233d3d927f40356ff545
+_commit=f723e0147889906e924ba6a13f3c450ae0d3910e
 _branch=odroid-5.18.y
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _desc="Tobetter Odroid Branch"
-pkgver=5.18
-pkgrel=8
+pkgver=5.18.1
+pkgrel=1
 arch=('aarch64')
 url="https://github.com/tobetter/linux/tree/${_branch}"
 license=('GPL2')
@@ -28,13 +28,13 @@ source=(
   '01-aegis-crypto.patch'
   '02-drm-meson-add-YUV422-output-support.patch'
 )
-md5sums=('98a6d8b9728b2f1624da4433950dcbef'
-         'dd9511b5324c57ab48500d1b0b44b066'
-         '13f7d22e7f0ff81a742fb4c7b02098f5'
-         'ce6c81ad1ad1f8b333fd6077d47abdaf'
-         '3dc88030a8f2f5a5f97266d99b149f77'
-         'a4f45dd491148536f89046344a62eeff'
-         '960a409f5f8ad30c4e45101bc83dc386')
+sha512sums=('31ca4b5a2efb2d280b8826e1723b6d1af64773e8e5f7e59daea1118d6e47dc93af5b21d6e33cdbea53062f3e9ec7a388f737c1c7f25e3454f1bdc1508ff197cd'
+            'c898cc5e8ade18d1a854982fb099b82e8a085b92b916fa1023c890fe279288cfdaaf67815e660ccdc046a949a6894b52eff454a039fac0abff04f6deeda80c11'
+            '2392bf75afee381599f1ab799f342aa2fc79fe131de1723860a9f9a93cbf427fc0e576ed0b90ec9986e3938705ad72893881670cdf9d284c72efa3ec9f24f943'
+            '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
+            'b2cdb620fcc6f0b430b0cf0c844887c2c1e290844ea330750cad52c9ec04e835ead973b664c7613d147037c388120affe97dfd2f2e0f9ae224db52aaa4cb8814'
+            '9e3b8a18a2e274885a767caf05e282cbbfd1eb824fe18193813e6f4e5d6059cc829383050dfbd49683e549bc5303f85ae139a58b0efb4b71c68c58ef4379db45'
+            '573a3aca1173a95d9051da7f1cf0747a7c7c17cc5438e5cbd0cfff81be2f354236c7902ea7ae4be78f7449a9c6945cffc41551b8c0b2426627d65dac9b52fbae')
 
 prepare() {
   cd ${_srcname}
@@ -51,7 +51,7 @@ prepare() {
   patch -p1 -i ../01-aegis-crypto.patch
 
   # Fix green line on left of screen
-  patch -p1 -i ../02-drm-meson-add-YUV422-output-support.patch
+  #patch -p1 -i ../02-drm-meson-add-YUV422-output-support.patch
 }
 
 build() {
