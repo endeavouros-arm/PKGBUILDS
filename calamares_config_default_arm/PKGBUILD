@@ -1,5 +1,6 @@
-# Maintainer: Sravan Pannala <sra.djoker@gmail.com>
-# Contributer: EndeavourOS <info@endeavouros.com>
+# Maintainer : Sravan Pannala <sradjoker@endeavouros.com>
+# Contributor : EndeavourOS <info@endeavouros.com>
+
 pkgname=calamares_config_default_arm
 pkgver=22.06.1.1
 pkgrel=1

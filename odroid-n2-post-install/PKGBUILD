@@ -1,9 +1,9 @@
-# Maintainer : Sravan Pannala <sra.djoker@gmail.com>
+# Maintainer : Sravan Pannala <sradjoker@endeavouros.com>
 # Contributor : Dan Johansen <strit@manjaro.org>
 
 pkgname=odroid-n2-post-install
-pkgver=0.1
-pkgrel=2
+pkgver=0.2
+pkgrel=1
 pkgdesc="Odroid N2 post install script"
 arch=('any')
 url="https://arm.endeavouros.com"

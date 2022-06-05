@@ -1,5 +1,5 @@
-# Maintainer: Sravan Pannala <sra.djoker@gmail.com>
-# Contributor: Jefferson Gonzalez <jgmdev@gmail.com>
+# Maintainer : Sravan Pannala <sradjoker@endeavouros.com>
+# Contributor : Jefferson Gonzalez <jgmdev@gmail.com>
 
 pkgbase=linux-odroid
 pkgname=('linux-odroid'
