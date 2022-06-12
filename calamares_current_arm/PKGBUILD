@@ -13,7 +13,7 @@ _eos_changes=EndeavourOS-calamares
 _reponame=calamares
 _calamares_ver=3.2.59
 pkgver=22.06.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Calamares installer for EndeavourOS ARM"
 arch=('any')
 url="https://github.com/endeavouros-team"
@@ -23,7 +23,7 @@ makedepends=('git' 'cmake' 'extra-cmake-modules' 'kpmcore' 'boost' 'python-jsons
 conflicts=('calamares-git')
 depends=( 'qt5-svg' 'qt5-webengine' 'yaml-cpp' 'networkmanager' 'upower' 'kcoreaddons' 'kconfig' 'ki18n' 'kservice' \
 'kwidgetsaddons' 'kpmcore' 'squashfs-tools' 'rsync' 'cryptsetup' 'qt5-xmlpatterns' 'doxygen' 'dmidecode' \
-'gptfdisk' 'kparts' 'polkit-qt5' 'python' 'solid' 'qt5-tools' 'boost-libs')
+'gptfdisk' 'kparts' 'polkit-qt5' 'python' 'solid' 'qt5-tools' 'boost-libs' 'ckbcomp')
 provides=("calamares")
 options=(!strip !emptydirs)
 source=(

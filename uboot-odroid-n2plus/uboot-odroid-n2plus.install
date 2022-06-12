@@ -1,0 +1,36 @@
+sd_fuse() {
+  if [ ! -b $1 ]; then
+    echo "No MMC device to flash, exiting."
+    exit 0
+  fi
+
+  echo "U-Boot fusing"
+  dd if=/boot/u-boot.bin of=$1 conv=fsync,notrunc bs=512 seek=1
+}
+
+flash_uboot() {
+  major=$(mountpoint -d / | cut -f 1 -d ':')
+  minor=$(mountpoint -d / | cut -f 2 -d ':')
+  device=$(cat /proc/partitions | awk {'if ($1 == "'${major}'" && $2 == "'${minor}'") print $4 '})
+  device="${device%%[0-9]}"
+  device="${device%%p}"
+  device="/dev/${device}"
+
+  echo "A new U-Boot version needs to be flashed onto ${device}."
+  echo "Do you want to do this now? [y|N]"
+  read -r shouldwe
+  sd_fuse ${device}
+  fi
+}
+
+post_install() {
+  /usr/bin/odroid-bootini
+  flash_uboot
+}
+
+post_upgrade() {
+  if [ ! -e "/boot/boot.ini" ]; then
+      /usr/bin/odroid-bootini
+  fi
+  flash_uboot
+}

@@ -1,0 +1,60 @@
+# U-Boot: ODROID-N2/N2+
+# Maintainer : Sravan Pannala <sradjoker@endeavouros.com>
+# Contributor : Jefferson Gonzalez <jgmdev@gmail.com>
+
+buildarch=8
+
+pkgname=uboot-odroid-n2plus
+_revision=189
+pkgver=2015.01.${_revision}
+pkgrel=2
+_edid_generator_commit=31a6f80784d289d2faa8c4ca4788409c83b3ea14
+pkgdesc="U-Boot for ODROID-N2/N2+"
+arch=('aarch64')
+url="https://github.com/hardkernel/u-boot"
+license=('GPL')
+install=$pkgname.install
+depends=('uboot-tools' 'util-linux' 'gawk' 'sed')
+conflicts=('uboot-odroid-n2')
+source=(
+  "https://github.com/hardkernel/u-boot/releases/download/travis/odroidc4-${_revision}/u-boot-odroidn2-${_revision}.tar.gz"
+  "https://github.com/akatrevorjay/edid-generator/archive/${_edid_generator_commit}.tar.gz"
+  "edid.md"
+  'sd_fusing.sh'
+  '91-uboot-uimg.hook'
+  '92-uboot-bootini.hook'
+  'boot.mainline.ini'
+  'boot.hardkernel.ini'
+  'odroid-bootini'
+)
+
+sha512sums=('c0a1833cd610a86fdb16576c6cd47aaa202458f38c91c1306f07627ce5c60fe7c4e44ccc9e8f2df7c46a266304ee256bd7c304b6ba84312c6b44afc6e7b6f529'
+            '16bbf0122e2a260266fabc2d5b827a7b0d68668c394ce5d39df8f836fe3050b7eb32e70a8a143d6911345b0d2f6fd43368a84b0b7033cbe762e4dd306a9e2d62'
+            '2fd96a0e1e406012bf70df0bc1ffd7a0f00dcab85770460bd9ad1c290a1a409854290b84761431c12a334100f4444c38bcd69db77c85c662fb2f0b63d69c98c0'
+            'ada95fa7b6d5a6215499c15a4579be83c068edf03c806bfcaf2ea81ed7e0689716cde59cf02e53c9b403172ce49f206a65e82965bdd0406d04d8507fa79f0738'
+            '6ae6758c3c20fb2104881c9e85e87e57d396521fbff9585a1c4588667a41e3f34392cf98f867b9e1b62dde806788dd50963937bfdffb77bb07e689f3ca595957'
+            '5f7ddcc9feb655063b74bfe9921d18ec09e19cabe46033f7dfb4f85ffae180a2aed08702d37702a3a862e5dec0a12e75df28c5d2a450d50bfc9bf7a3ae123e27'
+            '730cd4997997e43b7f11150e36ad1f3829b7291892710aac34c553a9738ffb5abf80ac6e404b2638817b6e8a4ca6b926fef9b83680c6d8657b1ae5cc2b21ccaf'
+            'a4772adb2898102c4a41daf697d10053810bf0beafb515cbafce535afa877ba2b92e972abf7496c13bf7905690d6fa31e9e1a10c4b5fbf9905b2104f24b1c5a2'
+            'd3a6f4c8087d857fc111a9a70c27e7fd436262f80cf38fb596e8ab6a68528c530b7b1b4ca6b88780380ad28d86605a17f6590909fd21ef885dc6ef4fb21f8b51')
+
+package() {
+  cd sd_fuse
+
+  mkdir -p "${pkgdir}"/boot
+
+  cp u-boot.bin "${pkgdir}"/boot
+  cp "${srcdir}/sd_fusing.sh" "${pkgdir}"/boot
+
+  install -Dm644 "${srcdir}/91-uboot-uimg.hook" "${pkgdir}/usr/share/libalpm/hooks/91-uboot-uimg.hook"
+  install -Dm644 "${srcdir}/92-uboot-bootini.hook" "${pkgdir}/usr/share/libalpm/hooks/92-uboot-bootini.hook"
+
+  install -Dm644 "${srcdir}/boot.hardkernel.ini" "${pkgdir}/usr/share/${pkgname}/boot.hardkernel.ini"
+  install -Dm644 "${srcdir}/boot.mainline.ini" "${pkgdir}/usr/share/${pkgname}/boot.mainline.ini"
+
+  install -Dm755 "${srcdir}/odroid-bootini" "${pkgdir}/usr/bin/odroid-bootini"
+
+  mkdir -p "${pkgdir}"/usr/lib/firmware/edid
+  cp "${srcdir}/edid-generator-${_edid_generator_commit}/"*.bin "${pkgdir}"/usr/lib/firmware/edid/
+  cp "${srcdir}/edid.md" "${pkgdir}"/usr/lib/firmware/edid/README.md
+}

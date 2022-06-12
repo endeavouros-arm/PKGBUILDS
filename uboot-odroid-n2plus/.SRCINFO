@@ -1,0 +1,34 @@
+pkgbase = uboot-odroid-n2plus
+	pkgdesc = U-Boot for ODROID-N2/N2+
+	pkgver = 2015.01.189
+	pkgrel = 1
+	url = https://github.com/hardkernel/u-boot
+	install = uboot-odroid-n2plus.install
+	arch = aarch64
+	license = GPL
+	depends = uboot-tools
+	depends = util-linux
+	depends = gawk
+	depends = sed
+	conflicts = uboot-odroid-n2
+	source = https://github.com/hardkernel/u-boot/releases/download/travis/odroidc4-189/u-boot-odroidn2-189.tar.gz
+	source = https://github.com/akatrevorjay/edid-generator/archive/31a6f80784d289d2faa8c4ca4788409c83b3ea14.tar.gz
+	source = edid.md
+	source = sd_fusing.sh
+	source = 91-uboot-uimg.hook
+	source = 92-uboot-bootini.hook
+	source = boot.mainline.ini
+	source = boot.hardkernel.ini
+	source = odroid-bootini
+	md5sums = 4be74c126cc8e872ea905d3ab82cb33a
+	md5sums = 4be5fae86f996be8540a4344a8b8c120
+	md5sums = 01aedffd498933b92c2573f779d6562b
+	md5sums = 3bd43e59c5f88a7544505288627fe2dd
+	md5sums = 1931c8dfde7088530f173ca59fdb8989
+	md5sums = e1a78b20ea7fe68ed3bb6fe24ff54110
+	md5sums = 9fb25292c1e2df597565e2b74f7dab04
+	md5sums = bb254cd5e389396939ce48164857e4e3
+	md5sums = b6d3cb8e235d889b29ea07f92ffe4946
+
+pkgname = uboot-odroid-n2plus
+
