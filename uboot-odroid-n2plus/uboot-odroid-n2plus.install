@@ -16,11 +16,8 @@ flash_uboot() {
   device="${device%%p}"
   device="/dev/${device}"
 
-  echo "A new U-Boot version needs to be flashed onto ${device}."
-  echo "Do you want to do this now? [y|N]"
-  read -r shouldwe
+  echo "A new U-Boot version will be flashed onto ${device}."
   sd_fuse ${device}
-  fi
 }
 
 post_install() {
