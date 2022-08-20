@@ -4,7 +4,7 @@
 # Contributor: Kevin Mihelich <kevin@archlinuxarm.org>
 # Contributor: Dragan Simic <dsimic@buserror.io>
 
-pkgbase=linux-pbp
+pkgbase=linux-eos-arm
 pkgver=5.19.2
 pkgrel=2
 _newversion=false
