@@ -1,0 +1,43 @@
+# Maintainer : Sravan Pannala <sradjoker@endeavouros.com>
+# Contributor: Dan Johansen <strit@manjaro.org>
+# Contributor: Furkan Kardame <furkan@fkardame.com>
+# Contributor: Dragan Simic <dsimic@buserror.io>
+
+pkgname=ap6256-firmware
+pkgver=2020.02
+pkgrel=10
+arch=('aarch64')
+pkgdesc='Firmware files for AP6256 WiFi/BT module'
+license=('unknown')
+url="https://github.com/radxa/rk-rootfs-build"
+depends=('git')
+conflicts=('ap6398s-firmware')
+source=('BCM4345C5.hcd'
+        'fw_bcm43456c5_ag.bin'
+        'brcmfmac43456-sdio.clm_blob'
+        'brcmfmac43456-sdio.AP6256.txt')
+md5sums=('4017a2bda950875f1fb3132b9ba7bbba'
+         'f77e38b143174bae5f91be2bd27a7d3f'
+         'c5aeca0e33de4ae870986c517963fef7'
+         'a3e2e18504c45a70ca6ea4a798df8193')
+
+package() {
+    # Bluetooth firmware
+    install -D -m 0644 BCM4345C5.hcd -t "${pkgdir}/usr/lib/firmware/brcm"
+
+    # WiFi firmware
+    install -D -m 0644 fw_bcm43456c5_ag.bin "${pkgdir}/usr/lib/firmware/brcm/brcmfmac43456-sdio.bin"
+    install -D -m 0644 brcmfmac43456-sdio.clm_blob -t "${pkgdir}/usr/lib/firmware/brcm"
+    install -D -m 0644 brcmfmac43456-sdio.AP6256.txt -t "${pkgdir}/usr/lib/firmware/brcm"
+
+    ln -s brcmfmac43456-sdio.AP6256.txt "${pkgdir}/usr/lib/firmware/brcm/brcmfmac43456-sdio.txt"
+    ln -s brcmfmac43456-sdio.AP6256.txt "${pkgdir}/usr/lib/firmware/brcm/brcmfmac43456-sdio.radxa,rockpi4b.txt"
+    ln -s brcmfmac43456-sdio.AP6256.txt "${pkgdir}/usr/lib/firmware/brcm/brcmfmac43456-sdio.radxa,rockpi4c.txt"
+    ln -s brcmfmac43456-sdio.AP6256.txt "${pkgdir}/usr/lib/firmware/brcm/brcmfmac43456-sdio.radxa,zero.txt"
+    ln -s brcmfmac43456-sdio.AP6256.txt "${pkgdir}/usr/lib/firmware/brcm/brcmfmac43456-sdio.radxa,zero2.txt"
+    ln -s brcmfmac43456-sdio.AP6256.txt "${pkgdir}/usr/lib/firmware/brcm/brcmfmac43456-sdio.pine64,pinebook-pro.txt"
+    ln -s brcmfmac43456-sdio.AP6256.txt "${pkgdir}/usr/lib/firmware/brcm/brcmfmac43456-sdio.pine64,rockpro64-v2.1.txt"
+    ln -s brcmfmac43456-sdio.AP6256.txt "${pkgdir}/usr/lib/firmware/brcm/brcmfmac43456-sdio.pine64,quartz64-a.txt"
+    ln -s brcmfmac43456-sdio.AP6256.txt "${pkgdir}/usr/lib/firmware/brcm/brcmfmac43456-sdio.pine64,quartz64-b.txt"
+    ln -s brcmfmac43456-sdio.AP6256.txt "${pkgdir}/usr/lib/firmware/brcm/brcmfmac43456-sdio.rockchip,rk3399-orangepi.txt"
+}

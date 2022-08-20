@@ -1,0 +1,28 @@
+# Maintainer: Sven Kiljan <sven dot archlinuxarm dash pbp at kiljan dot org>
+
+_pkgname=pine64-pinebookPro
+_pkgmajorversion=2021.04
+_pkgminorversion=002
+_pkgver=${_pkgmajorversion}-${_pkgminorversion}
+
+pkgname=towboot-pinebookpro-bin
+pkgver=${_pkgmajorversion}.${_pkgminorversion}
+pkgrel=1
+pkgdesc="Tow-Boot for Pinebook Pro"
+arch=('aarch64')
+url='https://github.com/Tow-Boot/Tow-Boot'
+license=('GPL')
+optdepends=('mtd-utils: SPI installation support')
+provides=('uboot')
+conflicts=('uboot')
+install=${pkgname}.install
+source=("https://github.com/Tow-Boot/Tow-Boot/releases/download/release-${_pkgver}/${_pkgname}-${_pkgver}.tar.xz")
+sha256sums=('934e9d03c75c2e95815bb6a6ce96a22f65d826335aa552e79f949a63fdfca676')
+
+package() {
+  cd "${_pkgname}-${_pkgver}"
+
+  mkdir -p "${pkgdir}/boot/extlinux"
+  install -Dm644 "binaries/Tow-Boot.noenv.bin" -t "${pkgdir}/boot"
+  install -Dm644 "binaries/Tow-Boot.spi.bin" -t "${pkgdir}/boot"
+}
