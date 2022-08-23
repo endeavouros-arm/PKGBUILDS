@@ -5,8 +5,8 @@
 # Contributor: Dragan Simic <dsimic@buserror.io>
 
 pkgbase=linux-eos-arm
-pkgver=5.19.2
-pkgrel=2
+pkgver=5.19.3
+pkgrel=1
 _newversion=false
 _stopbuild=false     # Will also stop if ${_newversion} is true
 _srcname="linux-${pkgver/%.0/}"
@@ -83,7 +83,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
-md5sums=('391274e2e49a881403b0ff2e0712bf82'
+md5sums=('5af3311ecafa00f607c99e82dbd2ebbe'
          '9aa0591c2d601a104d664a802a44728c'
          'e6fe272dc95a1c0a8f871924699fea16'
          '9f27b2a05eaeb1995fc0fcf6a8b923c4'
@@ -143,7 +143,7 @@ md5sums=('391274e2e49a881403b0ff2e0712bf82'
          'a2271452ecf71f2ee160ad76f8bcadef'
          '7a39de5aa1c29e81d03096c2f9163456'
          '92d5c7dd3052f5d7a670bd06213d75fb'
-         '9b8fb59b28465af2469ec4d23cff3dad'
+         '5ab2b045e39fdc2ca1bf329fc82eb02a'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77')
