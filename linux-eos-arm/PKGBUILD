@@ -1,11 +1,12 @@
 # AArch64 multi-platform
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Sravan Pannala <sradjoker@endeavouros.com>
+# Contributor: Dan Johansen <strit@manjaro.org>
 # Contributor: Kevin Mihelich <kevin@archlinuxarm.org>
 # Contributor: Dragan Simic <dsimic@buserror.io>
 
 pkgbase=linux-eos-arm
 pkgver=5.19.9
-pkgrel=1
+pkgrel=2
 _newversion=false
 _stopbuild=false     # Will also stop if ${_newversion} is true
 _srcname="linux-${pkgver/%.0/}"
@@ -146,7 +147,7 @@ md5sums=('6f684acaa107742c455791c25f2aee38'
          'a2271452ecf71f2ee160ad76f8bcadef'
          '7a39de5aa1c29e81d03096c2f9163456'
          '92d5c7dd3052f5d7a670bd06213d75fb'
-         'ee054962625dde40f8ad5ac66f7710cb'
+         '0ad8a568d95dc3abf4aa4a169eb7e814'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77')
