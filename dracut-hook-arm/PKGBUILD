@@ -4,7 +4,7 @@
 # Contributor : Kevin Del Castillo <quebin31@gmail.com>
 
 pkgname=dracut-hook-arm
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Install/remove hooks for dracut"
 url=https://dracut.wiki.kernel.org/index.php/Main_Page
@@ -19,7 +19,7 @@ source=(
 )
 sha256sums=('4539f8b4e4caef233b39a308891cf448de546efaad61579e9332e312e8c4ea3a'
             '8d7fe6622dcbe5fb8a4b0df33265e82bd895e328d202a841a46859c1dd99d47e'
-            '2448709d544d0cb4925915887681acf724405dcc01c1ead97d8009dc69c2146a'
+            '36b16a6334bd95cb4bf87b3d420173bf804f1348cb0f9f8778b64324aee9166c'
             'e79f8e9572c5d1af6052104eac7ff956754f7a191b52b16adf12b65a38e9b4ed')
 
 package() {
@@ -27,4 +27,16 @@ package() {
 	install -Dm644 "${srcdir}/60-dracut-remove.hook"  "${pkgdir}/usr/share/libalpm/hooks/60-dracut-remove.hook"
 	install -Dm755 "${srcdir}/dracut-install"         "${pkgdir}/usr/share/libalpm/scripts/dracut-install"
 	install -Dm755 "${srcdir}/dracut-remove"          "${pkgdir}/usr/share/libalpm/scripts/dracut-remove"
+	# install -Dm644 "/dev/null" "${pkgdir}/etc/pacman.d/hooks/90-linux.hook"
+	# install -Dm644 "/dev/null" "${pkgdir}/etc/pacman.d/hooks/90-linux-odroid.hook"
+	# install -Dm644 "/dev/null" "${pkgdir}/etc/pacman.d/hooks/90-linux-rpi.hook"
+	# install -Dm644 "/dev/null" "${pkgdir}/etc/pacman.d/hooks/90-linux-eos-arm.hook"
+	# install -Dm644 "/dev/null" "${pkgdir}/etc/pacman.d/hooks/90-mkinitcpio-install.hook"
+	mkdir -p ${pkgdir}/etc/pacman.d/hooks/
+	touch "${pkgdir}/etc/pacman.d/hooks/90-linux.hook"
+	touch "${pkgdir}/etc/pacman.d/hooks/90-linux-rpi.hook"
+	touch "${pkgdir}/etc/pacman.d/hooks/90-linux-odroid.hook"
+	touch "${pkgdir}/etc/pacman.d/hooks/90-linux-eos-arm.hook"
+	touch "${pkgdir}/etc/pacman.d/hooks/90-mkinitcpio-install.hook"
 }
+
