@@ -27,11 +27,8 @@ package() {
 	install -Dm644 "${srcdir}/60-dracut-remove.hook"  "${pkgdir}/usr/share/libalpm/hooks/60-dracut-remove.hook"
 	install -Dm755 "${srcdir}/dracut-install"         "${pkgdir}/usr/share/libalpm/scripts/dracut-install"
 	install -Dm755 "${srcdir}/dracut-remove"          "${pkgdir}/usr/share/libalpm/scripts/dracut-remove"
-	# install -Dm644 "/dev/null" "${pkgdir}/etc/pacman.d/hooks/90-linux.hook"
-	# install -Dm644 "/dev/null" "${pkgdir}/etc/pacman.d/hooks/90-linux-odroid.hook"
-	# install -Dm644 "/dev/null" "${pkgdir}/etc/pacman.d/hooks/90-linux-rpi.hook"
-	# install -Dm644 "/dev/null" "${pkgdir}/etc/pacman.d/hooks/90-linux-eos-arm.hook"
-	# install -Dm644 "/dev/null" "${pkgdir}/etc/pacman.d/hooks/90-mkinitcpio-install.hook"
+
+	# Override mkinicpio and kernel hooks
 	mkdir -p ${pkgdir}/etc/pacman.d/hooks/
 	touch "${pkgdir}/etc/pacman.d/hooks/90-linux.hook"
 	touch "${pkgdir}/etc/pacman.d/hooks/90-linux-rpi.hook"
