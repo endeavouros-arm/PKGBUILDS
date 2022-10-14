@@ -1,0 +1,30 @@
+# Maintainer : Sravan Pannala <sradjoker@endeavouros.com
+# Contributor : Leonidas P. <jpegxguy at outlook dot com>
+# Contributor : Franklyn Tackitt <franklyn@tackitt.net>
+# Contributor : Kevin Del Castillo <quebin31@gmail.com>
+
+pkgname=dracut-hook-arm
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Install/remove hooks for dracut"
+url=https://dracut.wiki.kernel.org/index.php/Main_Page
+arch=('any')
+license=('BSD')
+depends=('dracut')
+source=(
+	"dracut-install"
+	"dracut-remove"
+	"90-dracut-install.hook"
+	"60-dracut-remove.hook"
+)
+sha256sums=('dd372f57c30afae3f63c0a9098e78e7d332075c45e7892795718082ebb25f8e1'
+            'f8e44f700d31d06570608b2abe149876b8c056216b503ba73933e7a0f83c8420'
+            '1cd687ffd3caab736a379f4203fbca3f579e6c9d6576640dbb2714e40f90b43a'
+            'e79f8e9572c5d1af6052104eac7ff956754f7a191b52b16adf12b65a38e9b4ed')
+
+package() {
+	install -Dm644 "${srcdir}/90-dracut-install.hook" "${pkgdir}/usr/share/libalpm/hooks/90-dracut-install.hook"
+	install -Dm644 "${srcdir}/60-dracut-remove.hook"  "${pkgdir}/usr/share/libalpm/hooks/60-dracut-remove.hook"
+	install -Dm755 "${srcdir}/dracut-install"         "${pkgdir}/usr/share/libalpm/scripts/dracut-install"
+	install -Dm755 "${srcdir}/dracut-remove"          "${pkgdir}/usr/share/libalpm/scripts/dracut-remove"
+}

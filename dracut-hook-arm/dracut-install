@@ -1,0 +1,26 @@
+#!/bin/bash -e
+
+all=0
+lines=()
+
+if (( all )); then
+	lines=(/usr/lib/modules/*)
+fi
+
+for line in "${lines[@]}"; do
+	if ! pacman -Qqo "${line}/pkgbase" &> /dev/null; then
+		# if pkgbase does not belong to any package then skip this kernel
+		continue
+	fi
+
+	pkgbase="$(<"${line}/pkgbase")"
+	kver="${line##*/}"
+	dracut_restore_img="/usr/lib/modules/${kver}/initrd"
+
+	echo ":: Building initramfs for ${pkgbase} (${kver})"
+	dracut --force --hostonly --no-hostonly-cmdline ${dracut_restore_img} "${kver}"
+	install -Dm644 ${dracut_restore_img} "/boot/initramfs-${pkgbase}.img"
+
+	echo ":: Building fallback initramfs for ${pkgbase} (${kver})"
+	dracut --force --no-hostonly "/boot/initramfs-${pkgbase}-fallback.img" "${kver}"
+done

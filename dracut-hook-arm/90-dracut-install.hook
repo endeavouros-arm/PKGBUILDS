@@ -1,0 +1,16 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/dracut/*
+Target = usr/lib/systemd/systemd
+Target = boot/kernel.img
+Target = boot/kernel7.img
+Target = boot/kernel8.img
+Target = usr/lib/initcpio/*
+
+[Action]
+Description = Updating initramfs...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/dracut-install
+NeedsTargets
