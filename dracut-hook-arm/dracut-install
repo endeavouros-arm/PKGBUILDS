@@ -3,6 +3,19 @@
 all=0
 lines=()
 
+while read -r line; do
+	if [[ "${line}" != */vmlinuz ]]; then
+		# triggers when it's a change to dracut files
+		all=1
+		continue
+	fi
+
+	lines+=("/${line%/vmlinuz}")
+
+	pkgbase="$(<"${lines[-1]}/pkgbase")"
+	install -Dm644 "/${line}" "/boot/vmlinuz-${pkgbase}"
+done
+
 if (( all )); then
 	lines=(/usr/lib/modules/*)
 fi

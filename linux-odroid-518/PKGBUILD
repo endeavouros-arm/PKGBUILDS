@@ -10,7 +10,7 @@ _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _desc="Tobetter Odroid Branch"
 pkgver=5.18.12
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url="https://github.com/tobetter/linux/tree/${_branch}"
 license=('GPL2')
@@ -86,8 +86,11 @@ package_linux-odroid() {
   _kernver="$(make kernelrelease)"
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
+  _modulesdir="${pkgdir}/usr/lib/modules/$_kernver"
 
   mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
+  echo "$pkgbase" | install -Dm644 /dev/stdin "$_modulesdir/pkgbase"
+  
   make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
   make INSTALL_DTBS_PATH="${pkgdir}/boot/dtbs" dtbs_install
   cp arch/$KARCH/boot/Image{,.gz} "${pkgdir}/boot"

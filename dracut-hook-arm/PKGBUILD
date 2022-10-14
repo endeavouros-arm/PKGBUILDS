@@ -4,7 +4,7 @@
 # Contributor : Kevin Del Castillo <quebin31@gmail.com>
 
 pkgname=dracut-hook-arm
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Install/remove hooks for dracut"
 url=https://dracut.wiki.kernel.org/index.php/Main_Page
@@ -17,9 +17,9 @@ source=(
 	"90-dracut-install.hook"
 	"60-dracut-remove.hook"
 )
-sha256sums=('dd372f57c30afae3f63c0a9098e78e7d332075c45e7892795718082ebb25f8e1'
-            'f8e44f700d31d06570608b2abe149876b8c056216b503ba73933e7a0f83c8420'
-            'fdba6d308fc83aa0bedd124f362bba9ce6044193d9802997c5b0921667133605'
+sha256sums=('4539f8b4e4caef233b39a308891cf448de546efaad61579e9332e312e8c4ea3a'
+            '8d7fe6622dcbe5fb8a4b0df33265e82bd895e328d202a841a46859c1dd99d47e'
+            '2448709d544d0cb4925915887681acf724405dcc01c1ead97d8009dc69c2146a'
             'e79f8e9572c5d1af6052104eac7ff956754f7a191b52b16adf12b65a38e9b4ed')
 
 package() {
