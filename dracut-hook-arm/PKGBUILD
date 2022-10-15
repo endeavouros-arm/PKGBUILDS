@@ -29,7 +29,7 @@ package() {
 	install -Dm755 "${srcdir}/dracut-remove"          "${pkgdir}/usr/share/libalpm/scripts/dracut-remove"
 
 	# Override mkinicpio and kernel hooks
-	mkdir -p ${pkgdir}/etc/pacman.d/hooks/
+	mkdir -p "${pkgdir}/etc/pacman.d/hooks/"
 	touch "${pkgdir}/etc/pacman.d/hooks/90-linux.hook"
 	touch "${pkgdir}/etc/pacman.d/hooks/90-linux-rpi.hook"
 	touch "${pkgdir}/etc/pacman.d/hooks/90-linux-odroid.hook"
