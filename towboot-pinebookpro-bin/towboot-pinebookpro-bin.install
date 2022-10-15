@@ -1,4 +1,4 @@
-flash_towboot() {
+print_towboot() {
   echo ""
   echo "A new Tow-Boot version can be flashed onto your install drive or to SPI."
   echo "Note that doing so will overwrite any existing bootloader and configuration."
@@ -13,8 +13,29 @@ flash_towboot() {
   echo ""
 }
 
+sd_fuse() {
+  if [ ! -b $1 ]; then
+    echo "No MMC device to flash, exiting."
+    exit 0
+  fi
+
+  echo "Tow-Boot fusing"
+  dd if=/boot/Tow-Boot.noenv.bin of=$1 seek=64 conv=notrunc,fsync
+}
+
+flash_towboot() {
+  major=$(mountpoint -d / | cut -f 1 -d ':')
+  minor=$(mountpoint -d / | cut -f 2 -d ':')
+  device=$(cat /proc/partitions | awk {'if ($1 == "'${major}'" && $2 == "'${minor}'") print $4 '})
+  device="${device%%[0-9]}"
+  device="${device%%p}"
+  device="/dev/${device}"
+  sd_fuse ${device}
+}
+
+
 post_install() {
-  flash_towboot
+  print_towboot
   if [ -f /boot/extlinux/extlinux.conf.pacsave ]; then
   mv /boot/extlinux/extlinux.conf.pacsave /boot/extlinux/extlinux.conf
   fi
@@ -27,10 +48,11 @@ KERNEL /Image
 FDT /dtbs/rockchip/rk3399-pinebook-pro.dtb
 APPEND initrd=/initramfs-linux.img console=ttyS2,115200 console=tty0 root=LABEL=ROOT_ALARM rw rootwait plymouth.ignore-serial-consoles" > /boot/extlinux/extlinux.conf
   fi
+  flash_towboot
 }
 
 post_upgrade() {
-  flash_towboot
+  print_towboot
   if [ -f /boot/extlinux/extlinux.conf.pacsave ]; then
   mv /boot/extlinux/extlinux.conf.pacsave /boot/extlinux/extlinux.conf
   fi

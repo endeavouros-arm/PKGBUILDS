@@ -7,7 +7,7 @@ _pkgver=${_pkgmajorversion}-${_pkgminorversion}
 
 pkgname=towboot-pinebookpro-bin
 pkgver=${_pkgmajorversion}.${_pkgminorversion}
-pkgrel=1
+pkgrel=2
 pkgdesc="Tow-Boot for Pinebook Pro"
 arch=('aarch64')
 url='https://github.com/Tow-Boot/Tow-Boot'
