@@ -6,7 +6,7 @@
 
 pkgbase=linux-eos-arm
 pkgver=6.0.6
-pkgrel=1
+pkgrel=4
 _newversion=false
 _stopbuild=false     # Will also stop if ${_newversion} is true
 _srcname="linux-${pkgver/%.0/}"
@@ -115,7 +115,7 @@ md5sums=('4e01a82c673ea0fb85f751672f99dc96'
          '92d5c7dd3052f5d7a670bd06213d75fb'
          'b241ca1a4566d37bd29cde8db238762d'
          'e8ea5b4f0937c3799a846991a9259b4b'
-         '7a41ae149fb4b915989a0a91b48e3792'
+         '10defff51abefc1382243791346ec989'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77')
@@ -151,10 +151,6 @@ prepare() {
 
   # Don't run depmod on "make install", we'll do that ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
-}
-
-build() {
-  cd ${_srcname}
 
   # Get the kernel version
   if [[ "${_newversion}" = false ]]; then
@@ -180,6 +176,11 @@ build() {
     msg "Stopping build"
     return 1
   fi
+
+}
+
+build() {
+  cd ${_srcname}
 
   # Enable to create an all-inclusive build
   #yes "" | make config
