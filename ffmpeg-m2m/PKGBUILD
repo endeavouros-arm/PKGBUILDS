@@ -17,7 +17,6 @@
 pkgname=ffmpeg-m2m
 pkgver=5.1.2.r85.g105c1cbdf4
 pkgrel=1
-epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=(aarch64)
 url=https://ffmpeg.org/
