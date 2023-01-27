@@ -3,13 +3,15 @@
 pkgbase=linux-odroid
 pkgname=('linux-odroid'
          'linux-odroid-headers')
-_commit=a410a625e249ee9b2e993ddc34848a5bd2c321a1
+_commit=5b2c1231ee5ca3dec3d76662f398eee25a70d01a
 _branch=odroid-6.0.y
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _desc="Tobetter Odroid Branch"
-pkgver=6.0.15
+pkgver=6.0.16
 pkgrel=1
+_newversion=false
+_stopbuild=false     # Will also stop if ${_newversion} is true
 arch=('aarch64')
 url="https://github.com/tobetter/linux/tree/${_branch}"
 license=('GPL2')
@@ -27,7 +29,7 @@ source=(
   '01-aegis-crypto.patch'
   '02-drm-meson-add-YUV422-output-support.patch'
 )
-sha512sums=('32a207d69731504fa1c129df826f3b5cd88ae0aba6b6a94359fc2c247c3385c6f5d2927034e862debc90dc6ef4cb1c6082e98332d8134fd61771b1ca42a6d2ac'
+sha512sums=('cda8290c8b971b3ae9712f6592ac8d70885c30d4933769bc2f170be64765b84560b1ee47f83dc0d45bbce0160d95e8dd975068dfc436d89ead5ad15cc6390a3c'
             '7dbe63fd1066cf1bca815159fdcc387fd01a6eeedef492a74d57a0eac6e1e167e7e1e8ad21fd4832e08ffd475d78634f7a542334d0d739a946a10023ad1de637'
             '2392bf75afee381599f1ab799f342aa2fc79fe131de1723860a9f9a93cbf427fc0e576ed0b90ec9986e3938705ad72893881670cdf9d284c72efa3ec9f24f943'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
@@ -48,6 +50,34 @@ prepare() {
 
   # Fix latest gcc compiling errors with the aegis crypto module.
   patch -p1 -i ../01-aegis-crypto.patch
+  # Get the kernel version
+ if [[ "${_newversion}" = false ]]; then
+    make prepare
+  fi
+
+  # Configure the kernel; adjust the line below to your choice
+  # or simply manually edit the ".config" file
+  if [[ "${_newversion}" = true ]]; then
+    make menuconfig   # CLI menu for configuration
+  fi
+  #make nconfig       # New CLI menu for configuration
+  #make xconfig       # X-based configuration
+  #make oldconfig     # Using old config from previous kernel version
+
+  # Stash the configuration (use with new major kernel version)
+  ### Save configuration for later reuse
+  echo "Save configuration for later reuse..."
+  cat .config > "${startdir}/config-${pkgver}-${pkgrel}-${pkgbase}"
+  # if [[ "${_newversion}" = true ]]; then
+  #   cp ./.config /var/tmp/${pkgbase}.config
+  # fi
+
+  # Stop here, which is useful to configure the kernel
+  if [[ "${_newversion}" = true || "${_stopbuild}" = true ]]; then
+    msg "Stopping build"
+    return 1
+  fi
+
 
   # Fix green line on left of screen
   #patch -p1 -i ../02-drm-meson-add-YUV422-output-support.patch
@@ -56,8 +86,6 @@ prepare() {
 build() {
   cd ${_srcname}
 
-  # get kernel version
-  make prepare
 
   # build!
   unset LDFLAGS
