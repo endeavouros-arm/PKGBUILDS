@@ -8,7 +8,7 @@
 # calamares_config_default_arm - default settings
 # calamares_config_ce_arm - Community Edition settings
 
-pkgname=calamares
+pkgname=calamares_arm
 # _eos_changes=EndeavourOS-calamares
 # _reponame=calamares
 # _calamares_ver=3.2.61
