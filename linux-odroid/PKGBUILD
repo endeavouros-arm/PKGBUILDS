@@ -3,12 +3,12 @@
 pkgbase=linux-odroid
 pkgname=('linux-odroid'
          'linux-odroid-headers')
-_commit=8b6ce2500f071feec8f5984c3eaae29921e6dc53
-_branch=odroid-6.0.y
+_commit=39ddaeafbc03f85e88462a56ed3899e538102715
+_branch=odroid-6.2.y
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _desc="Tobetter Odroid Branch"
-pkgver=6.0.19
+pkgver=6.2.14
 pkgrel=1
 _newversion=false
 _stopbuild=false     # Will also stop if ${_newversion} is true
@@ -29,8 +29,8 @@ source=(
   '01-aegis-crypto.patch'
   '02-drm-meson-add-YUV422-output-support.patch'
 )
-sha512sums=('ce57059890c0b4865445fda31e516e271394cbca4c7c160f8ce7ec4919c43034ed58224b11eb7960fb2f0b57e3d21d6ad4c6c8d828b88a183f055874747003af'
-            'cfed735623f85ffa51bf31d1f84be375abce8fd7a549531bd100148496f18b9d5fc4088cd9f372de7243860a3e9f20a0b99a878b36640c86be33d98e89bf5512'
+sha512sums=('ccc868625385cf0b6900386ee1c331575255933c6dd47a3006c625ce91971d11c642960f034eba30f9a0fcfaa7ba8d0ed9dc5dc761a165f5ef730faae718e039'
+            'b81772412dcf1f449c3d4fc9d734c29ba21c2b3b8f1fdba2b641caf2804d967e82c0e12c79c22d2d110b57039a8f12c0a470c2cb0a514e1dc7921da9cd430bd2'
             '2392bf75afee381599f1ab799f342aa2fc79fe131de1723860a9f9a93cbf427fc0e576ed0b90ec9986e3938705ad72893881670cdf9d284c72efa3ec9f24f943'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             'b2cdb620fcc6f0b430b0cf0c844887c2c1e290844ea330750cad52c9ec04e835ead973b664c7613d147037c388120affe97dfd2f2e0f9ae224db52aaa4cb8814'
