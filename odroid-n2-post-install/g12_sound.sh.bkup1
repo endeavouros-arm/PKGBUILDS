@@ -146,15 +146,6 @@ echo $card
   mixer $card 'SPDIFOUT SRC SEL' 'IN 1'
   mixer $card 'SPDIFOUT Playback' on
 
-# Amlogic G12 3.5 mm Jack to pcm2
-  mixer $card 'ACODEC' dB gain: 100, 100
-  mixer $card 'ACODEC Left DAC Sel' left
-  mixer $card 'ACODEC Playback Channel Mode' Stereo
-  mixer $card 'ACODEC Right DAC Sel' Right
-  mixer $card 'TOACODEC Lane Select' 0
-  mixer $card 'TOACODEC Out' en
-  mixer $card 'TOACODEC Src' I2S c
-
 # Amlogic GX HDMI and S/PDIF
   mixer $card 'AIU HDMI CTRL SRC' 'I2S'
   mixer $card 'AIU SPDIF SRC SEL' 'SPDIF'
