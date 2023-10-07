@@ -4,7 +4,7 @@
 
 pkgname=pinebookpro-post-install
 pkgver=20$(date +%y%m%d)
-pkgrel=1
+pkgrel=2
 pkgdesc="ARM platform files for Pine64 Pinebook Pro"
 arch=('any')
 url="https://www.manjaro.org"
