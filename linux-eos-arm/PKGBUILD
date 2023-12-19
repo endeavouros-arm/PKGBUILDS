@@ -4,7 +4,7 @@
 # Contributor: Dragan Simic <dsimic@buserror.io>
 
 pkgbase=linux-eos-arm
-pkgver=6.6.5
+pkgver=6.6.7
 pkgrel=1
 _newversion=false
 _stopbuild=false     # Will also stop if ${_newversion} is true
@@ -41,7 +41,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
-md5sums=('528c4c09d2802c2a387b7740550d8a5a'
+md5sums=('ab2e3e953d3394b461b775b325fbc621'
          'f8f0b124c741be61d86bea8d44e875f9'
          '564136ab1c75b6dc67be02b54e695ae5'
          '0892035d83463c736df7ad0290e1c6f9'
