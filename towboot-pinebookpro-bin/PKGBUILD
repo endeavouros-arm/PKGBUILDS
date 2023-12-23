@@ -1,8 +1,8 @@
 # Maintainer: Sven Kiljan <sven dot archlinuxarm dash pbp at kiljan dot org>
 
 _pkgname=pine64-pinebookPro
-_pkgmajorversion=2021.10
-_pkgminorversion=005
+_pkgmajorversion=2022.07
+_pkgminorversion=006
 _pkgver=${_pkgmajorversion}-${_pkgminorversion}
 
 pkgname=towboot-pinebookpro-bin
@@ -16,9 +16,8 @@ optdepends=('mtd-utils: SPI installation support')
 provides=('uboot')
 conflicts=('uboot')
 install=${pkgname}.install
-source=("https://github.com/Tow-Boot/Tow-Boot/releases/download/release-${_pkgver}/${_pkgname}-${_pkgver}.tar.xz")
-sha256sums=('1f7871c7a4b334cd2df9c297b47635730aad5a6d62d3150bbf35ab091827a7cf')
-
+source=("https://github.com/Tow-Boot/Tow-Boot/releases/tag/release-${_pkgver}/${_pkgname}-${_pkgver}.tar.xz")
+sha256sums=('a0832cf8dcc04ac33da20e9f66369e57948b948fd52ffa7ae7d892e18a9421dc')
 package() {
   cd "${_pkgname}-${_pkgver}"
 
