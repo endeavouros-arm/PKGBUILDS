@@ -4,7 +4,7 @@
 # Contributor: Dragan Simic <dsimic@buserror.io>
 
 pkgbase=linux-eos-arm
-pkgver=6.6.7
+pkgver=6.7.2
 pkgrel=1
 _newversion=false
 _stopbuild=false     # Will also stop if ${_newversion} is true
@@ -17,42 +17,11 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'dtc')
 options=('!strip')
 source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
-        '1003-panfrost-Silence-Panfrost-gem-shrinker-loggin.patch'                 # Panfrost (preference patch, might not be upstreamable)
-        '1004-arm64-dts-rockchip-Add-Firefly-Station-p1-support.patch'             # Firefly Station P1 (by Furkan)
-        '1005-rk3399-rp64-pcie-Reimplement-rockchip-PCIe-bus-scan-delay.patch'     # RockPro64 (by @nuumio, perhaps upstreamable?)
-        '1006-arm64-dts-amlogic-add-meson-g12b-ugoos-am6-plus.patch'               # Meson Ugoos (by Furkan)
-        '1007-arm64-dts-rockchip-Add-PCIe-bus-scan-delay-to-RockPr.patch'          # RockPro64 (relies on patch 1005)
-        '1009-arm64-dts-rockchip-Add-PCIe-bus-scan-delay-to-Rock-P.patch'          # Radxa Rock Pi 4 (relies on patch 1005)
-        '2001-staging-add-rtl8723cs-driver.patch'                                  # Realtek WiFi;  Not upstreamable Failed to compile on 6.3 - Need to Update
-        '3003-arm64-dts-rockchip-Add-hdmi-cec-assigned-clocks-to-r.patch'
-        '3005-arm64-dts-rockchip-Add-Quartz64-B-eeprom.patch'
-        '3007-arm64-dts-rockchip-Move-Quartz64-A-to-mdio-setup.patch'
-        '3008-arm64-dts-rockchip-Add-Quartz64-A-battery-node.patch'
-        #'4001-arm64-dts-rk3399-pinebook-pro-Fix-USB-PD-charging.patch'             # Pinebook Pro series from Megi START
-        #'4002-arm64-dts-rk3399-pinebook-pro-Improve-Type-C-support-on-Pinebook-Pro.patch'
-        #'4003-arm64-dts-rk3399-pinebook-pro-Remove-redundant-pinctrl-properties-from-edp.patch'
-        #'4004-arm64-dts-rk3399-pinebook-pro-Remove-unused-features.patch'
-        #'4005-arm64-dts-rk3399-pinebook-pro-Dont-allow-usb2-phy-driver-to-update-USB-role.patch'
-        #'4006-arm64-dts-rockchip-rk3399-pinebook-pro-Support-both-Type-C-plug-orientations.patch'
-        #'4007-ASoC-codec-es8316-DAC-Soft-Ramp-Rate-is-just-a-2-bit-control.patch'
-        #'4008-arm64-dts-rk3399-pinebook-pro-Fix-codec-frequency-after-boot.patch'
-        #'4009-arm64-dts-rockchip-rk3399-pinebook-pro-Fix-VDO-display-output.patch'
         'config'
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
-md5sums=('ab2e3e953d3394b461b775b325fbc621'
-         'f8f0b124c741be61d86bea8d44e875f9'
-         '564136ab1c75b6dc67be02b54e695ae5'
-         '0892035d83463c736df7ad0290e1c6f9'
-         '1b92d7617e60d3c525a4b18ab4351185'
-         '28982d87c45ed8f5aab966d82f8455d8'
-         'a0cf3209d3f856522ef14c4618837ae7'
-         '538e0aa76c44e2f7e0e883a11758e72d'
-         '467b3ff965db6867f4289f5d256ca93e'
-         '56605685714f21646f88fbc187a4bf47'
-         '61ed22ed1254727bd97902ce849d3df4'
-         'fa9babdfffadf76454b00fc22593eaba'
+md5sums=('62b0a6c979a54569295d34ed57f47875'
          '0972c81af19cf381fcec5d2bb130586e'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
@@ -73,13 +42,13 @@ prepare() {
   cd ${_srcname}
 
   # Assorted Manjaro ARM patches
-  apply_patches 1
+#  apply_patches 1
 
   # Assorted Pinebook, PinePhone and PineTab patches
-  apply_patches 2
+#  apply_patches 2
   
   # Assorted rk356x patches
-  apply_patches 3
+#  apply_patches 3
 
   # Pinebook Pro patches by Megi: https://github.com/torvalds/linux/compare/master...megous:linux:pbp-6.2
   # apply_patches 4
