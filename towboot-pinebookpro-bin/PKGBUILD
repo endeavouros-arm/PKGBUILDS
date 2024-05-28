@@ -1,13 +1,13 @@
 # Maintainer: Sven Kiljan <sven dot archlinuxarm dash pbp at kiljan dot org>
 
 _pkgname=pine64-pinebookPro
-_pkgmajorversion=2022.07
-_pkgminorversion=006
+_pkgmajorversion=2023.07
+_pkgminorversion=007
 _pkgver=${_pkgmajorversion}-${_pkgminorversion}
 
 pkgname=towboot-pinebookpro-bin
 pkgver=${_pkgmajorversion}.${_pkgminorversion}
-pkgrel=3
+pkgrel=1
 pkgdesc="Tow-Boot for Pinebook Pro"
 arch=('aarch64')
 url='https://github.com/Tow-Boot/Tow-Boot'
@@ -17,7 +17,7 @@ provides=('uboot')
 conflicts=('uboot')
 install=${pkgname}.install
 source=("https://github.com/Tow-Boot/Tow-Boot/releases/tag/release-${_pkgver}/${_pkgname}-${_pkgver}.tar.xz")
-sha256sums=('a0832cf8dcc04ac33da20e9f66369e57948b948fd52ffa7ae7d892e18a9421dc')
+sha256sums=('ec6349a8bbb5db277626fb831094927a6890cb79dabd7790ccf2125d1e9ff083')
 package() {
   cd "${_pkgname}-${_pkgver}"
 
