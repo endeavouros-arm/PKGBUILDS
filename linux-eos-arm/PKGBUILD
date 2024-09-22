@@ -4,7 +4,7 @@
 # Contributor: Dragan Simic <dsimic@buserror.io>
 
 pkgbase=linux-eos-arm
-pkgver=6.10.4
+pkgver=6.10.11
 pkgrel=1
 _newversion=false
 _stopbuild=false     # Will also stop if ${_newversion} is true
@@ -21,8 +21,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
-md5sums=('c6188d7457b3c5e0443ba20e57654c97'
-         '0972c81af19cf381fcec5d2bb130586e'
+md5sums=('51849ce2d6318ad0a4b552c1c8d2face'
+         '77493e0ec59aa5c25d717b1aba3a26ea'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77')
@@ -73,10 +73,10 @@ build() {
 
   # Configure the kernel; adjust the line below to your choice
   # or simply manually edit the ".config" file
-  if [[ "${_newversion}" = true ]]; then
+#  if [[ "${_newversion}" = true ]]; then
     make menuconfig   # CLI menu for configuration
-  fi
-  #make nconfig       # New CLI menu for configuration
+#  fi
+#  make nconfig       # New CLI menu for configuration
   #make xconfig       # X-based configuration
   #make oldconfig     # Using old config from previous kernel version
 
