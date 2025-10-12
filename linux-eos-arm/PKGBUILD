@@ -4,7 +4,7 @@
 # Contributor: Dragan Simic <dsimic@buserror.io>
 
 pkgbase=linux-eos-arm
-pkgver=6.17.1
+pkgver=6.17.2
 pkgrel=1
 _newversion=false
 _stopbuild=false     # Will also stop if ${_newversion} is true
@@ -21,7 +21,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
-md5sums=('a09fa9fc11ac8e087661edd7b9524bc0'
+md5sums=('78e52703f0bb88c56a1f13336270497b'
          '77493e0ec59aa5c25d717b1aba3a26ea'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
