@@ -4,7 +4,7 @@
 
 pkgname=pinebookpro-post-install
 pkgver=20$(date +%y%m%d)
-pkgrel=2
+pkgrel=3
 pkgdesc="ARM platform files for Pine64 Pinebook Pro"
 arch=('any')
 url="https://www.manjaro.org"
@@ -12,8 +12,7 @@ conflicts=('pinebook-post-install')
 license=('GPL')
 depends=('systemd' 'acpid' 'alsa-utils' 'initramfs' 'pinebookpro-audio' 'sed' 'grep')
 install=${pkgname}.install
-source=('10-usb-keyboard.hwdb'
-        '40-hibernation-disable.conf'
+source=('40-hibernation-disable.conf'
         '50-suspend-state.conf'
         '99-pinebookpro.conf'
         'asound.state')
@@ -24,7 +23,6 @@ sha256sums=('36ba827f0468f40af3b4dcd212fa745b901e0a8a8accaaeede623cc9bb397113'
             '98b229c8aeea3eba7376e4209c8aba29714df2d282931790b148454be6e0b225')
 
 package() {
-    install -D -m 0644 "${srcdir}/10-usb-keyboard.hwdb" -t "${pkgdir}/etc/udev/hwdb.d"
     install -D -m 0644 "${srcdir}/40-hibernation-disable.conf" -t "${pkgdir}/etc/systemd/sleep.conf.d"
     install -D -m 0644 "${srcdir}/50-suspend-state.conf" -t "${pkgdir}/etc/systemd/sleep.conf.d"
     install -D -m 0644 "${srcdir}/99-pinebookpro.conf" -t "${pkgdir}/usr/lib/sysctl.d"
