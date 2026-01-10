@@ -2,20 +2,6 @@ has_package() {
     pacman -Qq "${1}" > /dev/null 2>&1
 }
 
-provide_alsa_config() {
-    # Symlink the correct asound.state file if it doesn't already exist,
-    # or load the correct ALSA configuration here and it hopefully will
-    # be picked up and saved on the next reboot or shutdown
-    if [ ! -f /var/lib/alsa/asound.state ] && \
-       [ -d /var/lib/alsa ]; then
-        echo "Linking /var/lib/alsa/asound.state to /etc/alsa/asound.state..."
-        ln -sf /etc/alsa/asound.state /var/lib/alsa
-    else
-        echo "Loading /etc/alsa/asound.state configuration..."
-        alsactl --file /etc/alsa/asound.state restore
-    fi
-}
-
 post_install() {
     # Configure mkinitcpio.conf
     if has_package "mkinitcpio" && \
@@ -24,15 +10,9 @@ post_install() {
         echo "Configuring /etc/mkinitcpio.conf..."
         sed -i s/"^MODULES=()"/"MODULES=(rtc_rk808 rockchipdrm panel_edp pwm_bl)"/g /etc/mkinitcpio.conf
     fi
-
-    # Provide the ALSA configuration
-    provide_alsa_config
 }
 
 post_upgrade() {
-    # Provide the ALSA configuration
-    provide_alsa_config
-
     # Provide instructions about the video output kernel modules
     if has_package "mkinitcpio" && \
        [ -f /etc/mkinitcpio.conf ] && \
