@@ -4,7 +4,7 @@
 
 pkgname=pinebookpro-post-install
 pkgver=20$(date +%y%m%d)
-pkgrel=3
+pkgrel=4
 pkgdesc="ARM platform files for Pine64 Pinebook Pro"
 arch=('any')
 url="https://www.manjaro.org"
@@ -23,6 +23,4 @@ package() {
     install -D -m 0644 "${srcdir}/40-hibernation-disable.conf" -t "${pkgdir}/usr/lib/systemd/sleep.conf.d"
     install -D -m 0644 "${srcdir}/50-suspend-state.conf" -t "${pkgdir}/usr/lib/systemd/sleep.conf.d"
     install -D -m 0644 "${srcdir}/99-pinebookpro.conf" -t "${pkgdir}/usr/lib/sysctl.d"
-
-    ln -s /usr/lib/firmware "${pkgdir}/etc/firmware"
 }
