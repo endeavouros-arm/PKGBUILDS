@@ -2,16 +2,6 @@ has_package() {
     pacman -Qq "${1}" > /dev/null 2>&1
 }
 
-enable_acpid() {
-    systemctl status acpid.service > /dev/null 2>&1
-
-    # Enable the service only if found and not already enabled
-    if [[ $? = 3 ]]; then
-        echo "Enabling acpid service for headphones support..."
-        systemctl enable $1 --quiet acpid.service
-    fi
-}
-
 provide_alsa_config() {
     # Symlink the correct asound.state file if it doesn't already exist,
     # or load the correct ALSA configuration here and it hopefully will
@@ -37,18 +27,11 @@ post_install() {
 
     # Provide the ALSA configuration
     provide_alsa_config
-
-    # Ensure enabled acpid service
-    enable_acpid
 }
 
 post_upgrade() {
     # Provide the ALSA configuration
     provide_alsa_config
-
-    # Ensure enabled acpid service, and start the service
-    # if it wasn't found to be already enabled
-    enable_acpid --now
 
     # Provide instructions about the video output kernel modules
     if has_package "mkinitcpio" && \

@@ -10,7 +10,7 @@ arch=('any')
 url="https://www.manjaro.org"
 conflicts=('pinebook-post-install')
 license=('GPL')
-depends=('systemd' 'acpid' 'alsa-utils' 'initramfs' 'pinebookpro-audio' 'sed' 'grep')
+depends=('systemd' 'alsa-utils' 'initramfs' 'sed' 'grep')
 install=${pkgname}.install
 source=('40-hibernation-disable.conf'
         '50-suspend-state.conf'
