@@ -1,8 +1,0 @@
-post_upgrade() {
-	echo "Enabling acpid ..."
-	systemctl enable --now acpid
-	echo "Restarting acpid ..."
-	systemctl restart acpid
-	echo "Enabling hpdet state sync at boot ..."
-	systemctl enable --now pinebookpro-audio.service
-}
